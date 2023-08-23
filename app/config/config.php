@@ -1,8 +1,8 @@
 <?php
 
-define('base_url', 'http://localhost/tugasku/public');
+define('base_url', 'http://smkn6jember.net/RPL1_17/public');
 
-define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-define('DB_PASS', '');
-define('DB_NAME', 'rpl1_17');
+define('DB_HOST', 'smkn6jember.net');
+define('DB_USER', 'siswa');
+define('DB_PASS', 'siswa');
+define('DB_NAME', 'RPL1_17');
