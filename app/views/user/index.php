@@ -15,7 +15,7 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <a href="<?= base_url; ?>/user/create">
+                            <a href="<?= base_url; ?>/User/create">
                                 <button class="m-0 font-weight-bold btn btn-primary">Tambah User</button>
                             </a>
                         </div>
@@ -45,8 +45,8 @@
                                             <td><?= $row['username'];?></td>
                                             <td><?= $row['level'];?></td>
                                             <td>
-                                                <a href="<?= base_url;?>/user/edit/<?= $row['id_user']?>" class="btn btn-info btn-sm"><i class="fas fa-fw fa-pen"></i></a> 
-                                                <a href="<?= base_url;?>/user/hapus/<?= $row['id_user']?>" class="btn btn-danger btn-sm" onclick="return confirm('Hapus data?');"><i class="fas fa-fw fa-trash"></i></a>
+                                                <a href="<?= base_url;?>/User/edit/<?= $row['id_user']?>" class="btn btn-info btn-sm"><i class="fas fa-fw fa-pen"></i></a> 
+                                                <a href="<?= base_url;?>/User/hapus/<?= $row['id_user']?>" class="btn btn-danger btn-sm" onclick="return confirm('Hapus data?');"><i class="fas fa-fw fa-trash"></i></a>
                                             </td>
                                             </tr>
                                             <?php endforeach; ?>
