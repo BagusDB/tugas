@@ -1,6 +1,6 @@
 <?php
 
-class Barang extends Controller {
+class Customer extends Controller {
 	
 	// public function __construct()
 	// {	
@@ -13,12 +13,12 @@ class Barang extends Controller {
 	
 	public function index()
 	{
-		$data['title'] = 'Data Barang';
-		$data['barang'] = $this->model('BarangModel')->getAllBarang();
+		$data['title'] = 'Data Customer';
+		$data['customer'] = $this->model('CustomerModel')->getAllCustomer();
 		$this->view('templates/header', $data);
 		$this->view('templates/sidebar', $data);
 		$this->view('templates/topbar', $data);
-		$this->view('barang/index', $data);
+		$this->view('customer/index', $data);
 		$this->view('templates/footer');
 	}
 	
@@ -78,57 +78,57 @@ class Barang extends Controller {
 
 	public function edit($id){
 
-		$data['title'] = 'Edit Barang';
-		$data['barang'] = $this->model('BarangModel')->getBarangById($id);
+		$data['title'] = 'Edit Customer';
+		$data['customer'] = $this->model('CustomerModel')->getCustomerById($id);
 		$this->view('templates/header', $data);
 		$this->view('templates/sidebar', $data);
 		$this->view('templates/topbar', $data);
-		$this->view('barang/edit', $data);
+		$this->view('customer/edit', $data);
 		$this->view('templates/footer');
 	}
 
 	public function create(){
-		$data['title'] = 'Tambah Barang';		
+		$data['title'] = 'Tambah Customer';		
 		$this->view('templates/header', $data);
 		$this->view('templates/sidebar', $data);
 		$this->view('templates/topbar', $data);
-		$this->view('barang/create', $data);
+		$this->view('customer/create', $data);
 		$this->view('templates/footer');
 	}
 
 	public function simpan(){		
 
-		if( $this->model('BarangModel')->tambahBarang($_POST) > 0 ) {
+		if( $this->model('CustomerModel')->tambahCustomer($_POST) > 0 ) {
 			Flasher::setMessage('Berhasil','ditambahkan','success');
-			header('location: '. base_url . '/barang');
+			header('location: '. base_url . '/customer');
 			exit;			
 		}else{
 			Flasher::setMessage('Gagal','ditambahkan','danger');
-			header('location: '. base_url . '/barang');
+			header('location: '. base_url . '/customer');
 			exit;	
 		}
 	}
 
 	public function update(){	
-		if( $this->model('BarangModel')->updateDataBarang($_POST) > 0 ) {
+		if( $this->model('CustomerModel')->updateDataCustomer($_POST) > 0 ) {
 			Flasher::setMessage('Berhasil','diupdate','success');
-			header('location: '. base_url . '/barang');
+			header('location: '. base_url . '/customer');
 			exit;			
 		}else{
 			Flasher::setMessage('Gagal','diupdate','danger');
-			header('location: '. base_url . '/barang');
+			header('location: '. base_url . '/customer');
 			exit;	
 		}
 	}
 
 	public function hapus($id){
-		if( $this->model('BarangModel')->deleteBarang($id) > 0 ) {
+		if( $this->model('CustomerModel')->deleteCustomer($id) > 0 ) {
 			Flasher::setMessage('Berhasil','dihapus','success');
-			header('location: '. base_url . '/barang');
+			header('location: '. base_url . '/customer');
 			exit;			
 		}else{
 			Flasher::setMessage('Gagal','dihapus','danger');
-			header('location: '. base_url . '/barang');
+			header('location: '. base_url . '/customer');
 			exit;	
 		}
 	}

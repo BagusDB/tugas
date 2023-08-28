@@ -16,52 +16,49 @@ class BarangModel {
 		return $this->db->resultSet();
 	}
 
-	// public function getBukuById($id)
-	// {
-	// 	$this->db->query('SELECT * FROM ' . $this->table . ' WHERE id=:id');
-	// 	$this->db->bind('id',$id);
-	// 	return $this->db->single();
-	// }
+	public function getBarangById($id)
+	{
+		$this->db->query('SELECT * FROM ' . $this->table . ' WHERE id_barang=:id_barang');
+		$this->db->bind('id_barang',$id);
+		return $this->db->single();
+	}
 
-	// public function tambahBuku($data)
-	// {
-	// 	$query = "INSERT INTO buku (judul, penerbit, pengarang, tahun, kategori_id, harga) VALUES(:judul, :penerbit, :pengarang, :tahun, :kategori_id, :harga)";
-	// 	$this->db->query($query);
-	// 	$this->db->bind('judul', $data['judul']);
-	// 	$this->db->bind('penerbit', $data['penerbit']);
-	// 	$this->db->bind('pengarang', $data['pengarang']);
-	// 	$this->db->bind('tahun', $data['tahun']);
-	// 	$this->db->bind('kategori_id', $data['kategori_id']);
-	// 	$this->db->bind('harga', $data['harga']);
-	// 	$this->db->execute();
+	public function tambahBarang($data)
+	{
+		$query = "INSERT INTO tbl_barang (id_barang, nama_barang, harga_barang, id_supplier, stok) VALUES(:id_barang, :nama_barang, :harga_barang, :id_supplier, :stok)";
+		$this->db->query($query);
+		$this->db->bind('id_barang', $data['id_barang']);
+		$this->db->bind('nama_barang', $data['nama_barang']);
+		$this->db->bind('harga_barang', $data['harga_barang']);
+		$this->db->bind('id_supplier', $data['id_supplier']);
+		$this->db->bind('stok', $data['stok']);
+		$this->db->execute();
 
-	// 	return $this->db->rowCount();
-	// }
+		return $this->db->rowCount();
+	}
 
-	// public function updateDataBuku($data)
-	// {
-	// 	$query = "UPDATE buku SET judul=:judul, penerbit=:penerbit, pengarang=:pengarang, pengarang=:pengarang, tahun=:tahun, kategori_id=:kategori_id, harga=:harga WHERE id=:id";
-	// 	$this->db->query($query);
-	// 	$this->db->bind('id',$data['id']);
-	// 	$this->db->bind('judul', $data['judul']);
-	// 	$this->db->bind('penerbit', $data['penerbit']);
-	// 	$this->db->bind('pengarang', $data['pengarang']);
-	// 	$this->db->bind('tahun', $data['tahun']);
-	// 	$this->db->bind('kategori_id', $data['kategori_id']);
-	// 	$this->db->bind('harga', $data['harga']);
-	// 	$this->db->execute();
+	public function updateDataBarang($data)
+	{
+		$query = "UPDATE tbl_barang SET id_barang=:id_barang, nama_barang=:nama_barang, harga_barang=:harga_barang, id_supplier=:id_supplier, stok=:stok WHERE id_barang=:id_barang";
+		$this->db->query($query);
+		$this->db->bind('id_barang', $data['id_barang']);
+		$this->db->bind('nama_barang', $data['nama_barang']);
+		$this->db->bind('harga_barang', $data['harga_barang']);
+		$this->db->bind('id_supplier', $data['id_supplier']);
+		$this->db->bind('stok', $data['stok']);
+		$this->db->execute();
 
-	// 	return $this->db->rowCount();
-	// }
+		return $this->db->rowCount();
+	}
 
-	// public function deleteBuku($id)
-	// {
-	// 	$this->db->query('DELETE FROM ' . $this->table . ' WHERE id=:id');
-	// 	$this->db->bind('id',$id);
-	// 	$this->db->execute();
+	public function deleteBarang($id)
+	{
+		$this->db->query('DELETE FROM ' . $this->table . ' WHERE id_barang=:id_barang');
+		$this->db->bind('id_barang',$id);
+		$this->db->execute();
 
-	// 	return $this->db->rowCount();
-	// }
+		return $this->db->rowCount();
+	}
 
 	// public function cariBuku()
 	// {

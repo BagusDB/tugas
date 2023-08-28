@@ -1,33 +1,34 @@
 <?php
 
 class User extends Controller {
-	public function __construct()
-	{	
-		if($_SESSION['session_login'] != 'sudah_login') {
-			Flasher::setMessage('Login','Tidak ditemukan.','danger');
-			header('location: '. base_url . '/login');
-			exit;
-		}
-	} 
+	// public function __construct()
+	// {	
+	// 	if($_SESSION['session_login'] != 'sudah_login') {
+	// 		Flasher::setMessage('Login','Tidak ditemukan.','danger');
+	// 		header('location: '. base_url . '/login');
+	// 		exit;
+	// 	}
+	// } 
 	public function index()
 	{
 		$data['title'] = 'Data User';
 		$data['user'] = $this->model('UserModel')->getAllUser();
 		$this->view('templates/header', $data);
 		$this->view('templates/sidebar', $data);
+		$this->view('templates/topbar', $data);
 		$this->view('user/index', $data);
 		$this->view('templates/footer');
 	}
-	public function cari()
-	{
-		$data['title'] = 'Data User';
-		$data['user'] = $this->model('UserModel')->cariUser();
-		$data['key'] = $_POST['key'];
-		$this->view('templates/header', $data);
-		$this->view('templates/sidebar', $data);
-		$this->view('user/index', $data);
-		$this->view('templates/footer');
-	}
+	// public function cari()
+	// {
+	// 	$data['title'] = 'Data User';
+	// 	$data['user'] = $this->model('UserModel')->cariUser();
+	// 	$data['key'] = $_POST['key'];
+	// 	$this->view('templates/header', $data);
+	// 	$this->view('templates/sidebar', $data);
+	// 	$this->view('user/index', $data);
+	// 	$this->view('templates/footer');
+	// }
 
 	public function edit($id){
 
@@ -39,7 +40,7 @@ class User extends Controller {
 		$this->view('templates/footer');
 	}
 
-	public function tambah(){
+	public function create(){
 		$data['title'] = 'Tambah User';		
 		$this->view('templates/header', $data);
 		$this->view('templates/sidebar', $data);
@@ -47,7 +48,7 @@ class User extends Controller {
 		$this->view('templates/footer');
 	}
 
-	public function simpanUser(){		
+	public function simpan(){		
 		if($_POST['password'] == $_POST['ulangi_password']) {	
 			$row = $this->model('UserModel')->cekUsername();
 			if($row['username'] == $_POST['username']){
@@ -73,7 +74,7 @@ class User extends Controller {
 		
 	}
 
-	public function updateUser(){	
+	public function update(){	
 		if(empty($_POST['password'])) {
 			if( $this->model('UserModel')->updateDataUser($_POST) > 0 ) {
 			Flasher::setMessage('Berhasil','diupdate','success');
