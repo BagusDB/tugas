@@ -5,13 +5,13 @@ class Login extends Controller {
 	{
 		$data['title'] = 'Halaman Login';
 
-		$this->view('login/login', $data);
+		$this->view('auth/login', $data);
 	}
 
 	public function prosesLogin() {
-		if($row = $this->model('LoginModel')->checkLogin($_POST) > 0 ) {
+		if($row = $this->model('AuthModel')->checkLogin($_POST) > 0 ) {
 				$_SESSION['username'] = $row['username'];
-				$_SESSION['nama'] = $row['nama'];
+				// $_SESSION['nama'] = $row['nama'];
 				$_SESSION['session_login'] = 'sudah_login'; 
 
 				//$this->model('LoginModel')->isLoggedIn($_SESSION['session_login']);

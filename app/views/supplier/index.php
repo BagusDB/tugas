@@ -15,7 +15,7 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <a href="<?= base_url; ?>/Supplier/create">
+                            <a href="<?= base_url; ?>/supplier/create">
                                 <button class="m-0 font-weight-bold btn btn-primary">Tambah Supplier</button>
                             </a>
                         </div>
@@ -48,8 +48,8 @@
                                             <td><?= $row['alamat_supplier'];?></td>
                                             <td><?= $row['kontak_supplier'];?></td>
                                             <td>
-                                                <a href="<?= base_url;?>/Supplier/edit/<?= $row['id_supplier']?>" class="btn btn-info btn-sm"><i class="fas fa-fw fa-pen"></i></a> 
-                                                <a href="<?= base_url;?>/Supplier/hapus/<?= $row['id_supplier']?>" class="btn btn-danger btn-sm" onclick="return confirm('Hapus data?');"><i class="fas fa-fw fa-trash"></i></a>
+                                                <a href="<?= base_url;?>/supplier/edit/<?= $row['id_supplier']?>" class="btn btn-info btn-sm"><i class="fas fa-fw fa-pen"></i></a> 
+                                                <a href="<?= base_url;?>/supplier/hapus/<?= $row['id_supplier']?>" class="btn btn-danger btn-sm" onclick="return confirm('Hapus data?');"><i class="fas fa-fw fa-trash"></i></a>
                                             </td>
                                             </tr>
                                             <?php endforeach; ?>

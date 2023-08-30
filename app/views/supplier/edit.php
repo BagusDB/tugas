@@ -6,7 +6,7 @@
         
         <div class="card shadow mb-4">
             <div class="card-body">
-                <form action="<?= base_url; ?>/Supplier/update" method="POST">
+                <form action="<?= base_url; ?>/supplier/update" method="POST">
                     <div class="mb-3">
                         <label class="form-label">ID Suppplier</label>
                         <input type="text" class="form-control" name="id_supplier" value="<?= $data['supplier']['id_supplier']?>">
