@@ -6,7 +6,7 @@ class Barang extends Controller {
 	{	
 		if($_SESSION['session_login'] != 'sudah_login') {
 			Flasher::setMessage('Login','Tidak ditemukan.','danger');
-			header('location: '. base_url . '/login');
+			header('location: '. base_url . '/auth');
 			exit;
 		}
 	}
@@ -15,6 +15,7 @@ class Barang extends Controller {
 	{
 		$data['title'] = 'Data Barang';
 		$data['barang'] = $this->model('BarangModel')->getAllBarang();
+		$data['username'] = $_SESSION['username'];
 		$this->view('templates/header', $data);
 		$this->view('templates/sidebar', $data);
 		$this->view('templates/topbar', $data);
@@ -80,6 +81,7 @@ class Barang extends Controller {
 
 		$data['title'] = 'Edit Barang';
 		$data['barang'] = $this->model('BarangModel')->getBarangById($id);
+		$data['username'] = $_SESSION['username'];
 		$this->view('templates/header', $data);
 		$this->view('templates/sidebar', $data);
 		$this->view('templates/topbar', $data);
@@ -88,7 +90,8 @@ class Barang extends Controller {
 	}
 
 	public function create(){
-		$data['title'] = 'Tambah Barang';		
+		$data['title'] = 'Tambah Barang';	
+		$data['username'] = $_SESSION['username'];	
 		$this->view('templates/header', $data);
 		$this->view('templates/sidebar', $data);
 		$this->view('templates/topbar', $data);

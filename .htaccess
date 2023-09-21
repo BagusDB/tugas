@@ -1,0 +1,9 @@
+RewriteEngine On
+
+# Redirect to the public directory
+RewriteRule ^$ public/ [L]
+
+# Redirect to the public directory for non-existing files or directories
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.+)$ public/$1 [L]

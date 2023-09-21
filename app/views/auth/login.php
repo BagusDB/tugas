@@ -1,90 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" >
 <head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title><?= $data['title']?></title>
-
-    <!-- Custom fonts for this template-->
-    <link href="<?= base_url;?>/plugins/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
-
-    <!-- Custom styles for this template-->
-    <link href="<?= base_url; ?>/dist/css/sb-admin-2.min.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <head>
+	<meta charset="UTF-8">
+	<title><?= $data['title']?></title>
+	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+</head><link rel="stylesheet" href="<?= base_url; ?>/dist/css/style.css">
 
 </head>
-
-<body class="bg-gradient-primary">
-
-    <div class="container">
-
-        <!-- Outer Row -->
-        <div class="row justify-content-center">
-
-            <div class="col-xl-10 col-lg-12 col-md-9">
-
-                <div class="card o-hidden border-0 shadow-lg my-5">
-                    <div class="card-body p-0">
-                        <!-- Nested Row within Card Body -->
-                        <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
-                            <div class="col-lg-6">
-                                <div class="p-5">
-                                    <div class="col-sm-12">
-                                        <?php
-                                            Flasher::Message();
-                                        ?>
-                                        </div>
-                                    <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
-                                    </div>
-                                    <form class="user" action="<?= base_url; ?>/login/prosesLogin" method="POST" >
-                                        <div class="form-group">
-                                            <input type="text" class="form-control form-control-user" placeholder="username" name="username" autocomplete="off">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Password" name="password" autocomplete="off">
-                                        </div>
-                                        <button type="submit" class="btn btn-primary btn-user btn-block">Login</button>                                        
-                                    </form>
-                                    <hr>
-                                    <!-- <div class="text-center">
-                                        <a class="small" href="forgot-password.html">Forgot Password?</a>
-                                    </div>
-                                    <div class="text-center">
-                                        <a class="small" href="register.html">Create an Account!</a>
-                                    </div> -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-
+<body>
+<!-- partial:index.partial.html -->
+<section class="forms-section">
+<h1 class="section-title"></h1>
+  <div class="forms">
+    <div class="form-wrapper is-active">
+      <button type="button" class="switcher switcher-login">
+        Login
+        <span class="underline"></span>
+      </button>
+      <form class="form form-login" method="POST" action="<?= base_url; ?>/auth/prosesLogin">
+        <fieldset>
+          <div class="input-block">
+            <label>Username</label>
+            <input type="text" name="username" required autocomplete="off">
+          </div>
+          <div class="input-block">
+            <label>Password</label>
+            <input type="password" name="password" required autocomplete="off">
+          </div>
+          <div class="input-block">
+            <label>Level</label>
+            <select name="level" id="">
+              <option value="1">Admin</option>
+              <option value="2">Kasir</option>
+            </select>
+          </div>
+        </fieldset>
+        <button type="submit" class="btn-login">Login</button>
+      </form>
     </div>
-
-    <!-- Bootstrap core JavaScript-->
-    <script src="<?= base_url; ?>/plugins/jquery/jquery.min.js"></script>
-    <script src="<?= base_url; ?>/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="<?= base_url; ?>/plugins/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="<?= base_url; ?>/dist/js/sb-admin-2.min.js"></script>
+    <div class="form-wrapper">
+      <button type="button" class="switcher switcher-signup">
+        Sign Up
+        <span class="underline"></span>
+      </button>
+      <form class="form form-signup" method="POST" action="<?= base_url; ?>/auth/prosesRegister">
+        <fieldset>
+          <div class="input-block">
+            <label for="signup-email">Username</label>
+            <input id="signup-email" type="text" name="username" required autocomplete="off">
+          </div>
+          <div class="input-block">
+            <label for="signup-password">Password</label>
+            <input id="signup-password" type="password" name="password" required autocomplete="off">
+          </div>
+          <div class="input-block">
+            <label for="signup-password-confirm">Confirm password</label>
+            <input id="signup-password-confirm" type="password" name="conpass" required autocomplete="off">
+          </div>
+        </fieldset>
+        <button type="submit" class="btn-signup">Register</button>
+      </form>
+    </div>
+  </div>
+</section>
+<!-- partial -->
+  <script  src="<?= base_url; ?>/dist/js/script.js"></script>
 
 </body>
-
 </html>

@@ -6,7 +6,7 @@ class Supplier extends Controller {
 	{	
 		if($_SESSION['session_login'] != 'sudah_login') {
 			Flasher::setMessage('Login','Tidak ditemukan.','danger');
-			header('location: '. base_url . '/login');
+			header('location: '. base_url . '/auth');
 			exit;
 		}
 	}
@@ -15,6 +15,7 @@ class Supplier extends Controller {
 	{
 		$data['title'] = 'Data Supplier';
 		$data['supplier'] = $this->model('SupplierModel')->getAllSupplier();
+		$data['username'] = $_SESSION['username'];
 		$this->view('templates/header', $data);
 		$this->view('templates/sidebar', $data);
 		$this->view('templates/topbar', $data);
@@ -80,6 +81,7 @@ class Supplier extends Controller {
 
 		$data['title'] = 'Edit Supplier';
 		$data['supplier'] = $this->model('SupplierModel')->getSupplierById($id);
+		$data['username'] = $_SESSION['username'];
 		$this->view('templates/header', $data);
 		$this->view('templates/sidebar', $data);
 		$this->view('templates/topbar', $data);
@@ -88,7 +90,8 @@ class Supplier extends Controller {
 	}
 
 	public function create(){
-		$data['title'] = 'Tambah Supplier';		
+		$data['title'] = 'Tambah Supplier';
+		$data['username'] = $_SESSION['username'];		
 		$this->view('templates/header', $data);
 		$this->view('templates/sidebar', $data);
 		$this->view('templates/topbar', $data);

@@ -5,7 +5,7 @@ class User extends Controller {
 	{	
 		if($_SESSION['session_login'] != 'sudah_login') {
 			Flasher::setMessage('Login','Tidak ditemukan.','danger');
-			header('location: '. base_url . '/login');
+			header('location: '. base_url . '/auth');
 			exit;
 		}
 	} 
@@ -14,6 +14,7 @@ class User extends Controller {
 	{
 		$data['title'] = 'Data User';
 		$data['user'] = $this->model('UserModel')->getAllUser();
+		$data['username'] = $_SESSION['username'];
 		$this->view('templates/header', $data);
 		$this->view('templates/sidebar', $data);
 		$this->view('templates/topbar', $data);
@@ -35,6 +36,7 @@ class User extends Controller {
 
 		$data['title'] = 'Edit User';
 		$data['user'] = $this->model('UserModel')->getUserById($id);
+		$data['username'] = $_SESSION['username'];
 		$this->view('templates/header', $data);
 		$this->view('templates/sidebar', $data);
 		$this->view('user/edit', $data);
@@ -43,6 +45,7 @@ class User extends Controller {
 
 	public function create(){
 		$data['title'] = 'Tambah User';		
+		$data['username'] = $_SESSION['username'];
 		$this->view('templates/header', $data);
 		$this->view('templates/sidebar', $data);
 		$this->view('user/create', $data);

@@ -6,7 +6,7 @@ class Customer extends Controller {
 	{	
 		if($_SESSION['session_login'] != 'sudah_login') {
 			Flasher::setMessage('Login','Tidak ditemukan.','danger');
-			header('location: '. base_url . '/login');
+			header('location: '. base_url . '/auth');
 			exit;
 		}
 	}
@@ -15,6 +15,7 @@ class Customer extends Controller {
 	{
 		$data['title'] = 'Data Customer';
 		$data['customer'] = $this->model('CustomerModel')->getAllCustomer();
+		$data['username'] = $_SESSION['username'];
 		$this->view('templates/header', $data);
 		$this->view('templates/sidebar', $data);
 		$this->view('templates/topbar', $data);
@@ -80,6 +81,7 @@ class Customer extends Controller {
 
 		$data['title'] = 'Edit Customer';
 		$data['customer'] = $this->model('CustomerModel')->getCustomerById($id);
+		$data['username'] = $_SESSION['username'];
 		$this->view('templates/header', $data);
 		$this->view('templates/sidebar', $data);
 		$this->view('templates/topbar', $data);
@@ -88,7 +90,8 @@ class Customer extends Controller {
 	}
 
 	public function create(){
-		$data['title'] = 'Tambah Customer';		
+		$data['title'] = 'Tambah Customer';
+		$data['username'] = $_SESSION['username'];		
 		$this->view('templates/header', $data);
 		$this->view('templates/sidebar', $data);
 		$this->view('templates/topbar', $data);

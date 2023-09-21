@@ -5,14 +5,14 @@ class Home extends Controller {
 	{	
 		if($_SESSION['session_login'] != 'sudah_login') {
 			Flasher::setMessage('Login','Tidak ditemukan.','danger');
-			header('location: '. base_url . '/login');
+			header('location: '. base_url . '/auth');
 			exit;
 		}
 	} 
 	public function index()
 	{
 		$data['title'] = 'Halaman Dashboard';
-		$data['username'] = 'pp';
+		$data['username'] = $_SESSION['username'];
 		
 		$this->view('templates/header', $data);
 		$this->view('templates/sidebar', $data);
