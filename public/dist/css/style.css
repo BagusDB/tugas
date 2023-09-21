@@ -285,6 +285,7 @@ body {
 }
 
 .btn-login {
+	cursor: pointer;
 	color: #fbfdff;
 	background: #a7e245;
 	transform: translateX(-30%);

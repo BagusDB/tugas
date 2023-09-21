@@ -14,14 +14,24 @@ class Auth extends Controller {
 	}
 
 	public function prosesLogin() {
+		$secret_key = "6LeYzz8oAAAAAL7oe9lVhqI8RlBxhRqjhsMlkpiF";
+		$verify = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret_key.'&response='.$_POST['g-recaptcha-response']);
+		$response = json_decode($verify);
+
 		$user = $this->model('AuthModel')->checkLogin($_POST);
 
 		if($user){
-			$_SESSION['username'] = $user['username'];
-			$_SESSION['session_login'] = "sudah_login";
-
-			header('location: '. base_url . '/home');
-			exit;
+			if($response->success){
+				$_SESSION['username'] = $user['username'];
+				$_SESSION['session_login'] = "sudah_login";
+				
+				header('location: '. base_url . '/home');
+				exit;
+			}else{
+				Flasher::setMessage('Captcha','salah.','danger');
+				header('location: '. base_url . '/auth');
+				exit;
+			}
 		}else{
 			Flasher::setMessage('Username / Password','salah.','danger');
 			header('location: '. base_url . '/auth');

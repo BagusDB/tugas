@@ -6,6 +6,7 @@
 	<meta charset="UTF-8">
 	<title><?= $data['title']?></title>
 	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+  <script src='https://www.google.com/recaptcha/api.js'></script>
 </head><link rel="stylesheet" href="<?= base_url; ?>/dist/css/style.css">
 
 </head>
@@ -36,6 +37,7 @@
               <option value="2">Kasir</option>
             </select>
           </div>
+          <div class="g-recaptcha" data-sitekey="6LeYzz8oAAAAAGC-D-WaRnCg0yJepnoo6Anz7CoQ"></div>
         </fieldset>
         <button type="submit" class="btn-login">Login</button>
       </form>
